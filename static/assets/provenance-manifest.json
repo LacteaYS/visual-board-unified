@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "2.0.0",
+  "generatedAt": "2026-10-16T14:15:00+09:00",
+  "sourceRepository": "https://github.com/Z-Anatomy/Models-of-human-anatomy",
+  "sourceZipUrl": "https://raw.githubusercontent.com/Z-Anatomy/Models-of-human-anatomy/master/Z-Anatomy.zip",
+  "gitBlobShaRecordedAtDownload": "f43cabc6f366b2a6058dd2ed4a2b3c7b9b2492cb",
+  "files": {
+    "zipPath": "/Users/yc/Documents/ChatGPT/GDM 해커톤/vendor/z-anatomy/Z-Anatomy.zip",
+    "zipBytes": 86734957,
+    "zipSha256": "e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+    "blendPath": "/Users/yc/Documents/ChatGPT/GDM 해커톤/vendor/z-anatomy/extracted/Z-Anatomy/Startup.blend",
+    "blendBytes": 306838281,
+    "blendSha256": "9f08a17ea0115fed80b2a73ecdf0a1bc2ab2f6956f37c593ce23d513ea35afcd",
+    "exportedGlbFile": "whole_body.glb",
+    "exportedGlbBytes": 19905548,
+    "exportedGlbSha256": "0dfb2cfebbfe38c931c7a65f035757b06e7d125c466ddcdf444bb62c4dc54c49"
+  },
+  "licensesAndAttributions": {
+    "primaryAtlasLicense": "CC BY-SA 4.0 (Z-Anatomy - The libre 3D atlas of anatomy, Gauthier Kervyn et al.)",
+    "upstreamMeshLicense": "CC BY-SA 2.1 Japan (BodyParts3D - The Database Center for Life Science, Kousaku Okubo et al.)",
+    "definitionsNote": "Wikipedia CC BY-SA 3.0 in upstream Z-Anatomy; NOT used as unverified clinical truth here. Clinical definitions in this product are strictly separated and grounded in user-provided Source of Truth ([SOT-01]..[SOT-04]) and standard anatomical references.",
+    "excludedNonCommercialAssets": "Inner ear (CC BY-NC-SA 4.0) and Kidney (CC BY-NC 4.0) referenced in upstream License.txt are strictly excluded and verified absent in whole_body.glb and shoulder.glb.",
+    "armatureNote": "Startup.blend contains 0 ARMATURE objects. Camera rotation and structure visibility/opacity are separated from skeletal rigging."
+  }
+}

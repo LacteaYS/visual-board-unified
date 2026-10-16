@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visual Board — Unified 3D Anatomy, AI Visual, 2D Pathway &amp; Lecture Co-Pilot</title>
+  <link rel="stylesheet" href="/static/teum-theme.css" />
+</head>
+<body>
+  <!-- Top Minimal Header (48px) -->
+  <header class="top-header">
+    <div class="brand-group">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="brand-title">Visual Board</span>
+
+      <!-- Mode Switcher Segmented Pills -->
+      <nav id="mode-switcher-bar" class="mode-switcher-bar" role="tablist" aria-label="Visual Board Mode">
+        <button type="button" class="mode-pill active" data-mode="3d" role="tab" aria-selected="true">3D Anatomy</button>
+        <button type="button" class="mode-pill" data-mode="image" role="tab" aria-selected="false">AI Visual</button>
+        <button type="button" class="mode-pill" data-mode="diagram" role="tab" aria-selected="false">2D Pathway</button>
+        <button type="button" class="mode-pill" data-mode="slide" role="tab" aria-selected="false">Slide Deck</button>
+        <button type="button" id="btn-toggle-split" class="mode-pill mode-pill-split" aria-pressed="false" title="Side-by-side 50/50 split between 3D Anatomy and AI Visual / 2D Pathway">Split 3D + Visual</button>
+      </nav>
+    </div>
+
+    <div class="header-actions">
+      <!-- Contextual 3D Region Camera Pills (visible when 3D is active or split) -->
+      <div id="camera-preset-bar" class="camera-btn-bar" role="group" aria-label="Camera Region Presets">
+        <button type="button" class="btn-cam active" data-camera-preset="whole_body_front">Full Body</button>
+        <button type="button" class="btn-cam" data-camera-preset="posterior">Posterior</button>
+        <button type="button" class="btn-cam" data-camera-preset="head_neck">Head &amp; Brain</button>
+        <button type="button" class="btn-cam" data-camera-preset="thorax_organs">Heart &amp; Lungs</button>
+        <button type="button" class="btn-cam" data-camera-preset="abdomen_organs">Abdomen</button>
+        <button type="button" class="btn-cam" data-camera-preset="spine_pelvis">Spine &amp; Pelvis</button>
+        <button type="button" class="btn-cam" data-camera-preset="lower_limb">Lower Limb</button>
+      </div>
+
+      <span class="header-divider" aria-hidden="true"></span>
+
+      <!-- Session Boards History Popover Drawer -->
+      <div class="boards-drawer-wrap">
+        <button type="button" id="btn-boards-drawer" class="btn-secondary" aria-expanded="false" title="Switch back to any created 3D scene, AI image, region edit, video, or 2D diagram">
+          🗂️ Boards (<span id="boards-count-badge">4</span>)
+        </button>
+
+        <div id="boards-drawer-popover" class="boards-drawer-popover" hidden aria-label="Session Boards History">
+          <div class="boards-drawer-header">
+            <div class="boards-drawer-title-group">
+              <span class="eyebrow">SESSION HISTORY</span>
+              <strong class="boards-drawer-title">Saved Visual Boards</strong>
+            </div>
+            <div class="boards-filter-pills" role="group" aria-label="Filter boards by type">
+              <button type="button" class="board-filter-pill active" data-board-filter="all">All</button>
+              <button type="button" class="board-filter-pill" data-board-filter="3d">3D</button>
+              <button type="button" class="board-filter-pill" data-board-filter="image">Visual</button>
+              <button type="button" class="board-filter-pill" data-board-filter="diagram">2D Pathway</button>
+              <button type="button" class="board-filter-pill" data-board-filter="video">Video</button>
+            </div>
+            <button type="button" id="btn-close-boards-drawer" class="btn-icon-close" title="Close drawer">✕</button>
+          </div>
+          <div id="boards-drawer-list" class="boards-drawer-list"></div>
+        </div>
+      </div>
+
+      <button type="button" id="btn-undo" class="btn-secondary" title="Undo last scene or board action">Undo</button>
+      <button type="button" id="btn-reset" class="primary" title="Reset current view">Reset</button>
+
+      <!-- Hidden alias buttons for viewer.js backward compatibility -->
+      <button type="button" id="btn-scene-undo" class="sr-only-badges" aria-hidden="true" tabindex="-1"></button>
+      <button type="button" id="btn-scene-reset" class="sr-only-badges" aria-hidden="true" tabindex="-1"></button>
+    </div>
+
+    <!-- Hidden status nodes preserved only for JS compatibility -->
+    <div class="sr-only-badges" aria-hidden="true">
+      <span id="viewer-loading-badge"></span>
+      <span id="last-ack-badge"></span>
+      <span id="ws-status-badge"></span>
+    </div>
+  </header>
+
+  <!-- Full-Screen Unified Main Stage -->
+  <main id="main-stage" class="main-stage center-viewport" data-active-mode="3d" data-split-mode="false">
+    <div class="canvas-wrapper stage-workspace">
+      <!-- Left / Full 3D Whole-Body WebGL Viewport -->
+      <div id="three-stage-pane" class="stage-pane stage-pane-3d">
+        <div id="three-canvas-container"></div>
+        <div id="landmark-overlay-container"></div>
+
+        <!-- Top-Right Minimal Floating Structure Card -->
+        <aside id="selected-structure-card" class="minimal-info-card selected-structure-card" aria-label="Selected Anatomical Structure">
+          <div class="info-card-header-row">
+            <div class="eyebrow">SELECTED STRUCTURE</div>
+            <button type="button" id="btn-card-tts" class="btn-card-tts" title="Narrate structure clinical note (Gemini TTS)">🔊 Narrate</button>
+          </div>
+          <div id="selected-struct-name" class="info-card-title">Heart</div>
+          <div id="selected-struct-en" class="info-card-sub">Thorax · Cardiovascular System</div>
+          <p id="selected-struct-note" class="info-card-body">Central muscular pump of the cardiovascular system within the middle mediastinum, propelling oxygenated blood through the aorta and systemic circulation.</p>
+          <div class="card-action-row">
+            <button type="button" id="btn-card-focus" class="primary" style="flex:1">Fade Surrounding</button>
+            <button type="button" id="btn-card-isolate" class="btn-secondary" style="flex:1">Isolate</button>
+            <button type="button" id="btn-card-reset" class="btn-secondary">Reset</button>
+          </div>
+          <div class="card-bridge-row">
+            <button type="button" id="btn-capture-to-visual" class="btn-capture-bridge">
+              ✨ Send 3D View to AI Visual
+            </button>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Right / Full Multimodal Stage Panel (AI Visual, 2D Pathway, Slide Deck) -->
+      <section id="multimodal-stage-panel" class="stage-pane stage-pane-multimodal" hidden aria-label="Multimodal Visual Stage">
+        <!-- Sub-view A: AI Visual (Nano Banana Image, Partial Region Inpaint & Gemini Omni Video) -->
+        <div id="subview-image" class="multimodal-subview active" data-subview="image">
+          <div class="multimodal-toolbar">
+            <div class="toolbar-left">
+              <span class="eyebrow" id="visual-subview-eyebrow">AI VISUAL · NANO BANANA &amp; GEMINI OMNI</span>
+              <span id="visual-asset-title" class="toolbar-title">Alveolar-Capillary Gas Exchange (O₂ &amp; CO₂ Diffusion)</span>
+              <span id="visual-preservation-badge" class="preservation-pill" hidden>✓ 100% Outer Pixels Preserved</span>
+            </div>
+            <div class="toolbar-actions">
+              <button type="button" id="btn-new-illustration" class="btn-secondary" title="Generate a fresh medical illustration">🎨 New Illustration</button>
+              <button type="button" id="btn-select-region" class="btn-secondary" aria-pressed="false" title="Drag a rectangle on the image to edit only that region">⬚ Select Region to Edit</button>
+              <button type="button" id="btn-animate-video" class="primary" title="Animate current visual into a motion video with Gemini Omni">🎬 Animate to Video (Gemini Omni)</button>
+              <button type="button" id="btn-visual-tts" class="btn-secondary" title="Listen to clinical narration of the active visual">🔊 Voice Narration (TTS)</button>
+            </div>
+          </div>
+
+          <div class="visual-preset-strip" role="group" aria-label="Sample Medical Visuals">
+            <span class="strip-label">Presets:</span>
+            <button type="button" class="visual-preset-chip active" data-visual-preset="alveolar_gas_exchange">Alveolar Gas Exchange</button>
+            <button type="button" class="visual-preset-chip" data-visual-preset="coronary_circulation">Coronary Perfusion &amp; Plaque</button>
+            <button type="button" class="visual-preset-chip" data-visual-preset="rotator_cuff_axillary">Subscapularis &amp; Axillary Nerve</button>
+            <button type="button" class="visual-preset-chip" data-visual-preset="glomerular_filtration">Renal Glomerular Filtration</button>
+          </div>
+
+          <div class="visual-canvas-stage">
+            <div id="visual-media-frame" class="visual-media-frame">
+              <img id="visual-stage-image" class="visual-stage-image" alt="AI Medical Visual" draggable="false" />
+              <video id="visual-stage-video" class="visual-stage-video" controls autoplay loop muted playsinline hidden></video>
+              <canvas id="visual-motion-canvas" class="visual-stage-video" width="960" height="540" hidden></canvas>
+
+              <!-- Interactive Drag-Rectangle Region Selector Overlay (Partial Inpainting) -->
+              <div id="region-selector-layer" class="region-selector-layer" title="Drag across any part of the image to select a region for targeted inpainting">
+                <div id="region-select-box" class="region-select-box" hidden>
+                  <div id="region-selection-pill" class="region-selection-pill">
+                    <span id="region-pill-text">Region Selected — Type or speak edit below (outer pixels preserved)</span>
+                    <button type="button" id="btn-region-quick-apply" class="btn-region-apply">✨ Inpaint Region</button>
+                    <button type="button" id="btn-clear-region" class="btn-region-clear">✕ Clear</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Loading overlay during AI synthesis -->
+              <div id="visual-loading-overlay" class="visual-loading-overlay" hidden>
+                <div class="loading-spinner-box">
+                  <div class="spinner-dot-grid"><i></i><i></i><i></i><i></i></div>
+                  <div id="visual-loading-text" class="loading-title">Synthesizing AI Visual...</div>
+                  <div id="visual-loading-sub" class="loading-sub">Preserving anatomical fidelity and Teum editorial clarity</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Clinical Summary & Revision Strip on AI Visual -->
+            <aside id="visual-info-card" class="minimal-info-card visual-side-card" aria-label="Visual Explanation Card">
+              <div class="eyebrow" id="visual-card-eyebrow">VISUAL EXPLANATION</div>
+              <div id="visual-card-title" class="info-card-title">Alveolar Gas Exchange</div>
+              <div id="visual-card-subtitle" class="info-card-sub">Respiratory Membrane · Type I &amp; II Pneumocytes</div>
+              <p id="visual-card-body" class="info-card-body">Oxygen diffuses across the 0.5 μm alveolar-capillary membrane into erythrocytes while CO₂ rapidly exits plasma into the alveolar lumen. Drag any region on the image to add labels, zoom pathology, or highlight specific vessels.</p>
+              <div id="visual-history-strip" class="visual-history-strip"></div>
+            </aside>
+          </div>
+        </div>
+
+        <!-- Sub-view B: 2D Pathway Diagram (Interactive Node-Edge Signaling & Process Diagrams) -->
+        <div id="subview-diagram" class="multimodal-subview" data-subview="diagram" hidden>
+          <div class="multimodal-toolbar">
+            <div class="toolbar-left">
+              <span class="eyebrow">2D PATHWAY · INTERACTIVE MECHANISM GRAPH</span>
+              <div id="diagram-preset-bar" class="diagram-preset-bar" role="group" aria-label="2D Pathway Presets">
+                <button type="button" class="visual-preset-chip active" data-diagram-preset="gpcr_camp">GPCR–Gs–cAMP–PKA Signaling</button>
+                <button type="button" class="visual-preset-chip" data-diagram-preset="agonist_antagonist">Agonist vs Antagonist Comparison</button>
+                <button type="button" class="visual-preset-chip" data-diagram-preset="cardiopulmonary_flow">Cardiopulmonary Flow</button>
+                <button type="button" class="visual-preset-chip" data-diagram-preset="nmj_coupling">Neuromuscular Excitation</button>
+              </div>
+            </div>
+            <div class="toolbar-actions">
+              <div id="diagram-stepper-bar" class="diagram-stepper-bar" role="group" aria-label="Pathway Stepper"></div>
+              <button type="button" id="btn-diagram-tts" class="btn-secondary">🔊 Narrate Pathway</button>
+            </div>
+          </div>
+
+          <div class="diagram-stage-workspace">
+            <div id="diagram-canvas-wrap" class="diagram-canvas-wrap">
+              <div id="diagram-svg-host" class="diagram-svg-host" role="region" aria-label="Interactive Node-Edge Diagram"></div>
+            </div>
+
+            <!-- Top-Right Node Clinical/Scientific Detail Card -->
+            <aside id="diagram-node-card" class="minimal-info-card diagram-node-card" aria-label="Selected Pathway Node">
+              <div class="eyebrow" id="diagram-node-eyebrow">PATHWAY STEP 1 OF 5</div>
+              <div id="diagram-node-title" class="info-card-title">GPCR Receptor Activation</div>
+              <div id="diagram-node-role" class="info-card-sub">β₁ / β₂ Adrenergic Receptor · Cell Membrane</div>
+              <p id="diagram-node-body" class="info-card-body">Extracellular agonist binding induces a conformational shift in transmembrane helices TM5 and TM6, enabling the intracellular domain to engage the heterotrimeric Gs protein.</p>
+              <div id="diagram-node-edges" class="diagram-node-edges"></div>
+              <div class="card-action-row" style="margin-top: 10px;">
+                <button type="button" id="btn-diagram-prev" class="btn-secondary" style="flex:1">← Prev Step</button>
+                <button type="button" id="btn-diagram-next" class="primary" style="flex:1">Next Step →</button>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <!-- Sub-view C: Slide Deck (Lecture Slides -> AI Visual / 2D Pathway / 3D Anatomy) -->
+        <div id="subview-slide" class="multimodal-subview" data-subview="slide" hidden>
+          <div class="multimodal-toolbar">
+            <div class="toolbar-left">
+              <span class="eyebrow">SLIDE DECK · LECTURE TO VISUAL BRIDGE</span>
+              <div id="slide-selector-bar" class="diagram-preset-bar" role="group" aria-label="Lecture Slides"></div>
+            </div>
+            <div class="toolbar-actions">
+              <label for="slide-upload-input" id="btn-upload-slide" class="btn-secondary" style="cursor:pointer;">
+                📄 Upload Slide (PDF/PPTX/PNG)
+              </label>
+              <input type="file" id="slide-upload-input" accept=".pdf,.pptx,.png,.jpg,.jpeg,.webp,.md,.txt" hidden />
+              <button type="button" id="btn-slide-to-image" class="primary">✨ Generate AI Illustration from Slide</button>
+              <button type="button" id="btn-slide-to-diagram" class="btn-secondary">📊 Convert Slide to 2D Diagram</button>
+              <button type="button" id="btn-slide-to-3d" class="btn-secondary">🧍 Show Related 3D Anatomy</button>
+            </div>
+          </div>
+
+          <div class="slide-stage-workspace">
+            <article id="slide-card-container" class="slide-deck-card">
+              <!-- Populated dynamically by multimodal-stage.js -->
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom-Center Floating Voice & Smart Command Dock -->
+      <section class="voice-dock" aria-label="Voice and Smart Command Dock">
+        <div class="quick-voice-chips voice-Quick-chips">
+          <button type="button" class="voice-chip" data-quick-voice="Show heart and lungs">Show heart and lungs</button>
+          <button type="button" class="voice-chip" data-quick-voice="Highlight brain and fade skull">Highlight brain and fade skull</button>
+          <button type="button" class="voice-chip" data-quick-voice="Isolate liver and stomach">Isolate liver and stomach</button>
+          <button type="button" class="voice-chip" data-quick-voice="Show sciatic nerve and gluteus maximus">Show sciatic nerve and gluteus maximus</button>
+          <button type="button" class="voice-chip" data-quick-voice="🎨 Illustrate alveolar gas exchange">🎨 Illustrate alveolar gas exchange</button>
+          <button type="button" class="voice-chip" data-quick-voice="📊 GPCR cAMP signaling diagram">📊 GPCR cAMP signaling diagram</button>
+          <button type="button" class="voice-chip" data-quick-voice="🎬 Animate current visual to video">🎬 Animate current visual to video</button>
+        </div>
+
+        <form id="voice-command-form" class="voice-form-row voice-control-split-row">
+          <button type="button" id="btn-ptt-mic" class="btn-ptt" title="Push-to-Talk Voice Command (or press Space)">
+            <span>🎙️ Voice Command</span>
+          </button>
+          <button type="button" id="btn-wake-word-mode" class="btn-wake-word" aria-pressed="false" title="Lecture Hands-Free Mode: Say 'Visual Board, ...' or '비주얼 보드, ...' anytime">
+            <span>🎧 Wake Word ("Visual Board")</span>
+          </button>
+          <button type="button" id="btn-wake-word-calibrate" class="btn-wake-calibrate" title="3-Utterance Wake-Word Calibration">
+            ⚙️ Calibrate
+          </button>
+          <div class="voice-text-input-shell">
+            <input
+              type="text"
+              id="voice-command-input"
+              class="voice-input"
+              value=""
+              placeholder="Speak or type any 3D anatomy, AI illustration, region inpaint, video, or 2D pathway command..."
+              autocomplete="off"
+            />
+            <button type="submit" id="btn-text-submit" class="btn-text-submit-inline" title="Execute smart command (Enter)">↵</button>
+          </div>
+        </form>
+
+        <div id="voice-waveform-panel" class="voice-waveform-panel">
+          <div class="voice-canvas-wrap">
+            <canvas id="voice-waveform-canvas" width="220" height="32"></canvas>
+          </div>
+          <div class="voice-acoustics-meta">
+            <span id="voice-volume-badge" class="voice-state-badge">Mic Standby</span>
+            <span id="voice-level-readout" class="voice-level-meter">0%</span>
+            <div id="voice-live-transcript" class="voice-live-transcript">
+              Click Voice Command, toggle Wake Word ("Visual Board"), or press Space to speak
+            </div>
+            <span id="tts-audio-indicator" class="tts-audio-indicator" hidden>🔊 Narrating...</span>
+          </div>
+        </div>
+
+        <div class="voice-feedback-row">
+          <span id="voice-command-status">Ready — Speak or type to control 3D Anatomy, AI Visuals, Region Inpainting, Video, or 2D Pathways.</span>
+          <div id="voice-latency-badges" style="display: none;"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 3-Utterance Wake-Word Calibration Modal -->
+  <div id="wake-word-modal" class="teum-modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="wake-modal-title">
+    <div class="teum-modal-card">
+      <div class="teum-modal-header">
+        <div>
+          <div class="eyebrow">VOICE ONBOARDING · SPEAKER PROFILE</div>
+          <h2 id="wake-modal-title" class="teum-modal-title">Wake Word Calibration ("Visual Board")</h2>
+        </div>
+        <button type="button" id="btn-close-wake-modal" class="btn-icon-close" title="Close modal">✕</button>
+      </div>
+      <p class="teum-modal-desc">
+        Record or confirm 3 sample utterances so Visual Board locks onto your voice cadence and pronunciation during live lectures.
+      </p>
+      <div id="wake-utterance-list" class="wake-utterance-list">
+        <div class="wake-sample-row" data-sample-idx="0">
+          <span class="sample-num">01</span>
+          <input type="text" class="wake-sample-input" value="Visual Board, show heart and lungs" />
+          <button type="button" class="btn-secondary btn-record-sample" data-record-idx="0">🎙️ Speak Sample 1</button>
+          <span class="sample-status" id="wake-sample-status-0">Ready</span>
+        </div>
+        <div class="wake-sample-row" data-sample-idx="1">
+          <span class="sample-num">02</span>
+          <input type="text" class="wake-sample-input" value="Visual Board, illustrate alveolar gas exchange" />
+          <button type="button" class="btn-secondary btn-record-sample" data-record-idx="1">🎙️ Speak Sample 2</button>
+          <span class="sample-status" id="wake-sample-status-1">Ready</span>
+        </div>
+        <div class="wake-sample-row" data-sample-idx="2">
+          <span class="sample-num">03</span>
+          <input type="text" class="wake-sample-input" value="Visual Board, GPCR cAMP signaling diagram" />
+          <button type="button" class="btn-secondary btn-record-sample" data-record-idx="2">🎙️ Speak Sample 3</button>
+          <span class="sample-status" id="wake-sample-status-2">Ready</span>
+        </div>
+      </div>
+      <div class="teum-modal-footer">
+        <span id="wake-calibration-feedback" class="wake-calibration-feedback">Click each sample or save profile directly to activate Wake Word mode.</span>
+        <div class="teum-modal-actions">
+          <button type="button" id="btn-cancel-wake-modal" class="btn-secondary">Cancel</button>
+          <button type="button" id="btn-save-wake-profile" class="primary">✓ Save Calibration &amp; Enable Wake Word</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/static/multimodal-stage.js"></script>
+  <script type="module" src="/static/viewer.js"></script>
+</body>
+</html>

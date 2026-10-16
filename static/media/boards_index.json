@@ -1,0 +1,1280 @@
+{
+  "activeBoardId": "board-018612e9",
+  "activeSlideId": "slide-demo-1",
+  "updatedAt": 1792132085008,
+  "boardCount": 27,
+  "boards": [
+    {
+      "boardId": "board-init-3d",
+      "kind": "3d",
+      "title": "Whole-Body 3D Anatomy & Clinical Scene",
+      "subtitle": "Authoritative Z-Anatomy 3D + Whole-Body Organs, Neurovascular & Musculoskeletal Atlas",
+      "createdAt": 1792130669689,
+      "assetId": null,
+      "assetUrl": null,
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "narrationScript": "전신 3D 해부학 뷰어입니다. 음성이나 텍스트로 어깨 회전근개, 심장, 폐, 뇌, 간, 신장 등 원하는 해부학 구조물을 지시하면 표층 구조물 반투명화(Ghosting)와 카메라 포커스가 실시간으로 동기화됩니다.",
+      "sourceIds": [
+        "SOT-ANAT-01",
+        "SOT-ANAT-02",
+        "SOT-ANAT-03"
+      ],
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-init-gpcr",
+      "kind": "diagram",
+      "title": "Gs-결합 GPCR → cAMP → PKA 신호 전달 경로",
+      "subtitle": "리간드 결합부터 2차 전령 cAMP 생성 및 PKA 활성화까지의 6단계 흐름",
+      "createdAt": 1792130699689,
+      "assetId": null,
+      "assetUrl": null,
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": {
+        "sceneType": "diagram",
+        "domain": "biology_pathway",
+        "title": "Gs-결합 GPCR → cAMP → PKA 신호 전달 경로",
+        "subtitle": "리간드 결합부터 2차 전령 cAMP 생성 및 PKA 활성화까지의 6단계 흐름",
+        "sourceIds": [
+          "SOT-GPCR-01"
+        ],
+        "groundingMode": "strict_sot",
+        "camera": {
+          "zoom": 1.0,
+          "panX": 0,
+          "panY": 0,
+          "preset": "overview"
+        },
+        "nodes": [
+          {
+            "id": "step1_ligand_gpcr",
+            "stepNumber": 1,
+            "label": "리간드 결합 & GPCR 활성화",
+            "sublabel": "7TM 수용체 구조 변화",
+            "category": "receptor",
+            "compartment": "세포막 (Plasma Membrane)",
+            "description": "세포외 호르몬/신경전달물질이 GPCR에 결합해 세포질 측 헬릭스 구조를 활성화합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 90,
+            "y": 140
+          },
+          {
+            "id": "step2_gs_activation",
+            "stepNumber": 2,
+            "label": "Gs 단백질 GDP→GTP 교환",
+            "sublabel": "Gαs 서브유닛 활성화",
+            "category": "transducer",
+            "compartment": "세포막 내측",
+            "description": "활성 GPCR이 GEF로 작용하여 Gαs에서 GDP가 방출되고 GTP가 결합합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 310,
+            "y": 140
+          },
+          {
+            "id": "step3_subunit_dissociation",
+            "stepNumber": 3,
+            "label": "Gαs-GTP / Gβγ 분리",
+            "sublabel": "삼량체 해리 및 효과기 이동",
+            "category": "transducer",
+            "compartment": "세포막 내측",
+            "description": "GTP 결합으로 Switch 영역 구조가 변해 Gαs-GTP가 Gβγ 복합체와 분리됩니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 530,
+            "y": 140,
+            "detailChildren": [
+              {
+                "id": "step3a_gdp_pocket_open",
+                "label": "3-A. α5 헬릭스 결합 & 포켓 개방",
+                "detail": "활성 GPCR이 Gαs의 뉴클레오타이드 결합 포켓을 열어 GDP 친화도를 낮춤"
+              },
+              {
+                "id": "step3b_gtp_switch",
+                "label": "3-B. GTP 결합 & Switch I/II 변화",
+                "detail": "세포 내 고농도 GTP가 결합하며 Gαs Switch I/II 입체구조 전환"
+              },
+              {
+                "id": "step3c_effector_targeting",
+                "label": "3-C. Gαs-GTP 유리 & AC 결합",
+                "detail": "Gβγ에서 분리된 Gαs-GTP가 막을 따라 Adenylyl Cyclase 촉매 도메인에 결합"
+              }
+            ]
+          },
+          {
+            "id": "step4_adenylyl_cyclase",
+            "stepNumber": 4,
+            "label": "Adenylyl Cyclase 활성화",
+            "sublabel": "ATP → cAMP 전환 촉매",
+            "category": "enzyme",
+            "compartment": "세포막 (Plasma Membrane)",
+            "description": "Gαs-GTP가 결합한 아데닐산 고리화효소가 ATP를 고리형 AMP(cAMP)로 전환합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 530,
+            "y": 320
+          },
+          {
+            "id": "step5_camp_pka",
+            "stepNumber": 5,
+            "label": "2차 전령 cAMP 증폭 & PKA 해리",
+            "sublabel": "R2C2 → 활성 촉매 서브유닛(C)",
+            "category": "second_messenger",
+            "compartment": "세포질 (Cytosol)",
+            "description": "cAMP가 PKA 조절 서브유닛(R2)에 결합하여 활성 촉매 서브유닛(C2)을 방출합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 310,
+            "y": 320
+          },
+          {
+            "id": "step6_target_response",
+            "stepNumber": 6,
+            "label": "표적 단백질 & CREB 인산화",
+            "sublabel": "대사 효소 조절 및 유전자 전사",
+            "category": "effector_response",
+            "compartment": "세포질 / 핵 (Nucleus)",
+            "description": "활성 PKA가 세포질 표적 효소와 핵 내 CREB 전사인자를 인산화해 세포 반응을 완성합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 90,
+            "y": 320
+          }
+        ],
+        "edges": [
+          {
+            "id": "e1_2",
+            "from": "step1_ligand_gpcr",
+            "to": "step2_gs_activation",
+            "label": "구조 변화 전달 (GEF)"
+          },
+          {
+            "id": "e2_3",
+            "from": "step2_gs_activation",
+            "to": "step3_subunit_dissociation",
+            "label": "GTP 결합"
+          },
+          {
+            "id": "e3_4",
+            "from": "step3_subunit_dissociation",
+            "to": "step4_adenylyl_cyclase",
+            "label": "Gαs-GTP 이동"
+          },
+          {
+            "id": "e4_5",
+            "from": "step4_adenylyl_cyclase",
+            "to": "step5_camp_pka",
+            "label": "ATP → cAMP 생성"
+          },
+          {
+            "id": "e5_6",
+            "from": "step5_camp_pka",
+            "to": "step6_target_response",
+            "label": "촉매 서브유닛 유리"
+          }
+        ],
+        "annotations": [
+          {
+            "id": "note_sot_gpcr",
+            "targetId": "step3_subunit_dissociation",
+            "title": "핵심 분기점",
+            "body": "Gαs-GTP 분리가 일어나야 하위 Adenylyl Cyclase 및 cAMP 증폭이 시작됩니다.",
+            "badge": "SOT-GPCR-01"
+          }
+        ],
+        "comparison": null,
+        "anatomy": null
+      },
+      "narrationScript": "세포외 리간드가 GPCR에 결합하면 Gs 단백질에서 GDP가 방출되고 GTP가 결합하여 Gαs-GTP가 분리됩니다. 이후 아데닐산 고리화효소가 활성화되어 2차 전령 cAMP를 생성하고 PKA 인산화 반응을 유도합니다.",
+      "sourceIds": [
+        "SOT-GPCR-01",
+        "SOT-GPCR-02"
+      ],
+      "badge": "2D PATHWAY"
+    },
+    {
+      "boardId": "board-init-compare",
+      "kind": "diagram",
+      "title": "GPCR 신호 전달: 정상 활성화 vs 길항제 차단 비교",
+      "subtitle": "리간드 결합에 의한 cAMP-PKA 증폭 경로와 경쟁적 길항제(Antagonist) 차단 상태의 대조",
+      "createdAt": 1792130729689,
+      "assetId": null,
+      "assetUrl": null,
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": {
+        "sceneType": "compare",
+        "domain": "biology_pathway",
+        "title": "GPCR 신호 전달: 정상 활성화 vs 길항제 차단 비교",
+        "subtitle": "리간드 결합에 의한 cAMP-PKA 증폭 경로와 경쟁적 길항제(Antagonist) 차단 상태의 대조",
+        "sourceIds": [
+          "SOT-GPCR-01",
+          "SOT-GPCR-03"
+        ],
+        "groundingMode": "strict_sot",
+        "camera": {
+          "zoom": 1.0,
+          "panX": 0,
+          "panY": 0,
+          "preset": "overview"
+        },
+        "nodes": [
+          {
+            "id": "step1_ligand_gpcr",
+            "stepNumber": 1,
+            "label": "리간드 결합 & GPCR 활성화",
+            "sublabel": "7TM 수용체 구조 변화",
+            "category": "receptor",
+            "compartment": "세포막 (Plasma Membrane)",
+            "description": "세포외 호르몬/신경전달물질이 GPCR에 결합해 세포질 측 헬릭스 구조를 활성화합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 90,
+            "y": 140
+          },
+          {
+            "id": "step2_gs_activation",
+            "stepNumber": 2,
+            "label": "Gs 단백질 GDP→GTP 교환",
+            "sublabel": "Gαs 서브유닛 활성화",
+            "category": "transducer",
+            "compartment": "세포막 내측",
+            "description": "활성 GPCR이 GEF로 작용하여 Gαs에서 GDP가 방출되고 GTP가 결합합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 310,
+            "y": 140
+          },
+          {
+            "id": "step3_subunit_dissociation",
+            "stepNumber": 3,
+            "label": "Gαs-GTP / Gβγ 분리",
+            "sublabel": "삼량체 해리 및 효과기 이동",
+            "category": "transducer",
+            "compartment": "세포막 내측",
+            "description": "GTP 결합으로 Switch 영역 구조가 변해 Gαs-GTP가 Gβγ 복합체와 분리됩니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 530,
+            "y": 140,
+            "detailChildren": [
+              {
+                "id": "step3a_gdp_pocket_open",
+                "label": "3-A. α5 헬릭스 결합 & 포켓 개방",
+                "detail": "활성 GPCR이 Gαs의 뉴클레오타이드 결합 포켓을 열어 GDP 친화도를 낮춤"
+              },
+              {
+                "id": "step3b_gtp_switch",
+                "label": "3-B. GTP 결합 & Switch I/II 변화",
+                "detail": "세포 내 고농도 GTP가 결합하며 Gαs Switch I/II 입체구조 전환"
+              },
+              {
+                "id": "step3c_effector_targeting",
+                "label": "3-C. Gαs-GTP 유리 & AC 결합",
+                "detail": "Gβγ에서 분리된 Gαs-GTP가 막을 따라 Adenylyl Cyclase 촉매 도메인에 결합"
+              }
+            ]
+          },
+          {
+            "id": "step4_adenylyl_cyclase",
+            "stepNumber": 4,
+            "label": "Adenylyl Cyclase 활성화",
+            "sublabel": "ATP → cAMP 전환 촉매",
+            "category": "enzyme",
+            "compartment": "세포막 (Plasma Membrane)",
+            "description": "Gαs-GTP가 결합한 아데닐산 고리화효소가 ATP를 고리형 AMP(cAMP)로 전환합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 530,
+            "y": 320
+          },
+          {
+            "id": "step5_camp_pka",
+            "stepNumber": 5,
+            "label": "2차 전령 cAMP 증폭 & PKA 해리",
+            "sublabel": "R2C2 → 활성 촉매 서브유닛(C)",
+            "category": "second_messenger",
+            "compartment": "세포질 (Cytosol)",
+            "description": "cAMP가 PKA 조절 서브유닛(R2)에 결합하여 활성 촉매 서브유닛(C2)을 방출합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 310,
+            "y": 320
+          },
+          {
+            "id": "step6_target_response",
+            "stepNumber": 6,
+            "label": "표적 단백질 & CREB 인산화",
+            "sublabel": "대사 효소 조절 및 유전자 전사",
+            "category": "effector_response",
+            "compartment": "세포질 / 핵 (Nucleus)",
+            "description": "활성 PKA가 세포질 표적 효소와 핵 내 CREB 전사인자를 인산화해 세포 반응을 완성합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 90,
+            "y": 320
+          }
+        ],
+        "edges": [
+          {
+            "id": "e1_2",
+            "from": "step1_ligand_gpcr",
+            "to": "step2_gs_activation",
+            "label": "구조 변화 전달 (GEF)"
+          },
+          {
+            "id": "e2_3",
+            "from": "step2_gs_activation",
+            "to": "step3_subunit_dissociation",
+            "label": "GTP 결합"
+          },
+          {
+            "id": "e3_4",
+            "from": "step3_subunit_dissociation",
+            "to": "step4_adenylyl_cyclase",
+            "label": "Gαs-GTP 이동"
+          },
+          {
+            "id": "e4_5",
+            "from": "step4_adenylyl_cyclase",
+            "to": "step5_camp_pka",
+            "label": "ATP → cAMP 생성"
+          },
+          {
+            "id": "e5_6",
+            "from": "step5_camp_pka",
+            "to": "step6_target_response",
+            "label": "촉매 서브유닛 유리"
+          }
+        ],
+        "annotations": [
+          {
+            "id": "note_sot_gpcr",
+            "targetId": "step3_subunit_dissociation",
+            "title": "핵심 분기점",
+            "body": "Gαs-GTP 분리가 일어나야 하위 Adenylyl Cyclase 및 cAMP 증폭이 시작됩니다.",
+            "badge": "SOT-GPCR-01"
+          }
+        ],
+        "comparison": {
+          "leftTitle": "정상 Gs 신호 활성화 (Agonist 결합)",
+          "leftStatus": "ACTIVE",
+          "leftSummary": "리간드 결합 → Gαs-GTP 분리 → Adenylyl Cyclase 활성 → cAMP 상승 → PKA 인산화 반응 진행",
+          "leftSteps": [
+            {
+              "step": "1. 수용체 결합",
+              "state": "Agonist 결합 (활성 7TM 구조)",
+              "status": "active"
+            },
+            {
+              "step": "2-3. Gs 단백질",
+              "state": "GDP 방출 · GTP 결합 · Gαs-GTP 분리",
+              "status": "active"
+            },
+            {
+              "step": "4. Adenylyl Cyclase",
+              "state": "촉매 활성화 (ATP → cAMP 다량 합성)",
+              "status": "active"
+            },
+            {
+              "step": "5-6. PKA & 표적",
+              "state": "촉매 서브유닛 유리 → CREB/표적 인산화",
+              "status": "active"
+            }
+          ],
+          "rightTitle": "수용체 길항제 차단 (Antagonist 점유)",
+          "rightStatus": "BLOCKED",
+          "rightSummary": "길항제가 결합 포켓을 점유해 구조 변화 차단 → Gαs-GDP 삼량체 유지 → cAMP 미생성 → 하위 반응 억제",
+          "rightSteps": [
+            {
+              "step": "1. 수용체 결합",
+              "state": "Antagonist 점유 (비활성 구조 고정)",
+              "status": "blocked"
+            },
+            {
+              "step": "2-3. Gs 단백질",
+              "state": "Gαs-GDP · Gβγ 삼량체 해리 불능",
+              "status": "blocked"
+            },
+            {
+              "step": "4. Adenylyl Cyclase",
+              "state": "기저 상태 유지 (cAMP 농도 상승 없음)",
+              "status": "blocked"
+            },
+            {
+              "step": "5-6. PKA & 표적",
+              "state": "R2C2 비활성 복합체 유지 (하위 인산화 중단)",
+              "status": "blocked"
+            }
+          ]
+        },
+        "anatomy": null
+      },
+      "narrationScript": "왼쪽 정상 Agonist 결합 시에는 cAMP 증폭과 PKA 활성화가 일어나지만, 오른쪽 경쟁적 길항제(Antagonist) 점유 시에는 수용체 구조 변화와 Gs 삼량체 해리가 차단되어 하위 신호가 억제됩니다.",
+      "sourceIds": [
+        "SOT-GPCR-01",
+        "SOT-GPCR-03"
+      ],
+      "badge": "COMPARISON"
+    },
+    {
+      "boardId": "board-init-image",
+      "kind": "image",
+      "title": "우측 어깨 회전근개 · 견갑하근 해부학 단면 도해",
+      "subtitle": "이미지 위에서 마우스로 사각형 영역을 드래그해 부분 인페인팅(외부 픽셀 100% 보존)을 실행할 수 있습니다",
+      "createdAt": 1792130759689,
+      "assetId": "asset-init-subscap-illust",
+      "assetUrl": "/static/media/asset-init-subscap-illust.png",
+      "width": 1280,
+      "height": 720,
+      "model": "gemini-3.1-flash-lite-image",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "narrationScript": "Nano Banana로 생성된 어깨 해부학 단면 일러스트입니다. 원하는 영역을 드래그하여 선택하면 선택 영역 바깥 픽셀은 100% 보존한 채 해당 부위만 부분 수정하거나 Gemini Omni 영상으로 변환할 수 있습니다.",
+      "sourceIds": [
+        "SOT-ANAT-01"
+      ],
+      "badge": "NANO BANANA IMAGE"
+    },
+    {
+      "boardId": "board-969444bd",
+      "kind": "3d",
+      "title": "3D 해부학: Show heart and lungs",
+      "subtitle": "3D 해부학 장면에 'Show heart and lungs' 명령을 적용했습니다.",
+      "createdAt": 1792130858195,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Show heart and lungs",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Show heart and lungs' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-e19b3dbb",
+      "kind": "3d",
+      "title": "3D 해부학: Show heart and lungs",
+      "subtitle": "3D 해부학 장면에 'Show heart and lungs' 명령을 적용했습니다.",
+      "createdAt": 1792130874766,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Show heart and lungs",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Show heart and lungs' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-1bb114fb",
+      "kind": "3d",
+      "title": "3D 해부학: Highlight brain and fade skull",
+      "subtitle": "3D 해부학 장면에 'Highlight brain and fade skull' 명령을 적용했습니다.",
+      "createdAt": 1792130874780,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Highlight brain and fade skull",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Highlight brain and fade skull' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-52b52ad7",
+      "kind": "diagram",
+      "title": "Gs-결합 GPCR → cAMP → PKA 신호 전달 경로",
+      "subtitle": "리간드 결합부터 2차 전령 cAMP 생성 및 PKA 활성화까지의 6단계 흐름",
+      "createdAt": 1792130874782,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "deterministic-sot-graph",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": {
+        "sceneType": "diagram",
+        "domain": "biology_pathway",
+        "title": "Gs-결합 GPCR → cAMP → PKA 신호 전달 경로",
+        "subtitle": "리간드 결합부터 2차 전령 cAMP 생성 및 PKA 활성화까지의 6단계 흐름",
+        "sourceIds": [
+          "SOT-GPCR-01"
+        ],
+        "groundingMode": "strict_sot",
+        "camera": {
+          "zoom": 1.0,
+          "panX": 0,
+          "panY": 0,
+          "preset": "overview"
+        },
+        "nodes": [
+          {
+            "id": "step1_ligand_gpcr",
+            "stepNumber": 1,
+            "label": "리간드 결합 & GPCR 활성화",
+            "sublabel": "7TM 수용체 구조 변화",
+            "category": "receptor",
+            "compartment": "세포막 (Plasma Membrane)",
+            "description": "세포외 호르몬/신경전달물질이 GPCR에 결합해 세포질 측 헬릭스 구조를 활성화합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 90,
+            "y": 140
+          },
+          {
+            "id": "step2_gs_activation",
+            "stepNumber": 2,
+            "label": "Gs 단백질 GDP→GTP 교환",
+            "sublabel": "Gαs 서브유닛 활성화",
+            "category": "transducer",
+            "compartment": "세포막 내측",
+            "description": "활성 GPCR이 GEF로 작용하여 Gαs에서 GDP가 방출되고 GTP가 결합합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 310,
+            "y": 140
+          },
+          {
+            "id": "step3_subunit_dissociation",
+            "stepNumber": 3,
+            "label": "Gαs-GTP / Gβγ 분리",
+            "sublabel": "삼량체 해리 및 효과기 이동",
+            "category": "transducer",
+            "compartment": "세포막 내측",
+            "description": "GTP 결합으로 Switch 영역 구조가 변해 Gαs-GTP가 Gβγ 복합체와 분리됩니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 530,
+            "y": 140,
+            "detailChildren": [
+              {
+                "id": "step3a_gdp_pocket_open",
+                "label": "3-A. α5 헬릭스 결합 & 포켓 개방",
+                "detail": "활성 GPCR이 Gαs의 뉴클레오타이드 결합 포켓을 열어 GDP 친화도를 낮춤"
+              },
+              {
+                "id": "step3b_gtp_switch",
+                "label": "3-B. GTP 결합 & Switch I/II 변화",
+                "detail": "세포 내 고농도 GTP가 결합하며 Gαs Switch I/II 입체구조 전환"
+              },
+              {
+                "id": "step3c_effector_targeting",
+                "label": "3-C. Gαs-GTP 유리 & AC 결합",
+                "detail": "Gβγ에서 분리된 Gαs-GTP가 막을 따라 Adenylyl Cyclase 촉매 도메인에 결합"
+              }
+            ]
+          },
+          {
+            "id": "step4_adenylyl_cyclase",
+            "stepNumber": 4,
+            "label": "Adenylyl Cyclase 활성화",
+            "sublabel": "ATP → cAMP 전환 촉매",
+            "category": "enzyme",
+            "compartment": "세포막 (Plasma Membrane)",
+            "description": "Gαs-GTP가 결합한 아데닐산 고리화효소가 ATP를 고리형 AMP(cAMP)로 전환합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 530,
+            "y": 320
+          },
+          {
+            "id": "step5_camp_pka",
+            "stepNumber": 5,
+            "label": "2차 전령 cAMP 증폭 & PKA 해리",
+            "sublabel": "R2C2 → 활성 촉매 서브유닛(C)",
+            "category": "second_messenger",
+            "compartment": "세포질 (Cytosol)",
+            "description": "cAMP가 PKA 조절 서브유닛(R2)에 결합하여 활성 촉매 서브유닛(C2)을 방출합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 310,
+            "y": 320
+          },
+          {
+            "id": "step6_target_response",
+            "stepNumber": 6,
+            "label": "표적 단백질 & CREB 인산화",
+            "sublabel": "대사 효소 조절 및 유전자 전사",
+            "category": "effector_response",
+            "compartment": "세포질 / 핵 (Nucleus)",
+            "description": "활성 PKA가 세포질 표적 효소와 핵 내 CREB 전사인자를 인산화해 세포 반응을 완성합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 90,
+            "y": 320
+          }
+        ],
+        "edges": [
+          {
+            "id": "e1_2",
+            "from": "step1_ligand_gpcr",
+            "to": "step2_gs_activation",
+            "label": "구조 변화 전달 (GEF)"
+          },
+          {
+            "id": "e2_3",
+            "from": "step2_gs_activation",
+            "to": "step3_subunit_dissociation",
+            "label": "GTP 결합"
+          },
+          {
+            "id": "e3_4",
+            "from": "step3_subunit_dissociation",
+            "to": "step4_adenylyl_cyclase",
+            "label": "Gαs-GTP 이동"
+          },
+          {
+            "id": "e4_5",
+            "from": "step4_adenylyl_cyclase",
+            "to": "step5_camp_pka",
+            "label": "ATP → cAMP 생성"
+          },
+          {
+            "id": "e5_6",
+            "from": "step5_camp_pka",
+            "to": "step6_target_response",
+            "label": "촉매 서브유닛 유리"
+          }
+        ],
+        "annotations": [
+          {
+            "id": "note_sot_gpcr",
+            "targetId": "step3_subunit_dissociation",
+            "title": "핵심 분기점",
+            "body": "Gαs-GTP 분리가 일어나야 하위 Adenylyl Cyclase 및 cAMP 증폭이 시작됩니다.",
+            "badge": "SOT-GPCR-01"
+          }
+        ],
+        "comparison": null,
+        "anatomy": null
+      },
+      "narrationScript": "Gs-결합 GPCR → cAMP → PKA 신호 전달 경로: 리간드 결합부터 2차 전령 cAMP 생성 및 PKA 활성화까지의 6단계 흐름. 각 노드를 클릭하여 세부 기전을 확장하거나 정상 대비 차단 비교 뷰로 전환할 수 있습니다.",
+      "sourceIds": [
+        "SOT-GPCR-01"
+      ],
+      "badge": "2D DIAGRAM"
+    },
+    {
+      "boardId": "board-ef75ce73",
+      "kind": "image",
+      "title": "영역 부분 수정: Highlight alveolar capillary gas exc",
+      "subtitle": "외부 픽셀 100% 보존 · 영역 (320,180) 576×324px 수정 완료",
+      "createdAt": 1792130882979,
+      "assetId": "img-ba12c75db9",
+      "assetUrl": "/static/media/img-ba12c75db9.png",
+      "width": 1280,
+      "height": 720,
+      "model": "gemini-3.1-flash-lite-image",
+      "prompt": "Highlight alveolar capillary gas exchange in cyan",
+      "parentAssetId": "asset-init-subscap-illust",
+      "region": {
+        "x": 0.25,
+        "y": 0.25,
+        "width": 0.45,
+        "height": 0.45,
+        "pixelBox": {
+          "left": 320,
+          "top": 180,
+          "width": 576,
+          "height": 324,
+          "right": 896,
+          "bottom": 504
+        }
+      },
+      "outerPixelsPreserved": true,
+      "diagramScene": null,
+      "slideInfo": null,
+      "narrationScript": "선택하신 사각형 영역(576×324px)만 'Highlight alveolar capillary gas exchange in cyan' 요청에 맞춰 부분 인페인팅했습니다. 선택 영역 바깥의 원본 픽셀은 100% 그대로 보존되었습니다.",
+      "badge": "REGION INPAINTED"
+    },
+    {
+      "boardId": "board-53eb6ae3",
+      "kind": "3d",
+      "title": "3D 해부학: isolate liver and stomach",
+      "subtitle": "3D 해부학 장면에 'isolate liver and stomach' 명령을 적용했습니다.",
+      "createdAt": 1792130882995,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "isolate liver and stomach",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'isolate liver and stomach' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-47047d38",
+      "kind": "3d",
+      "title": "3D 해부학: Show heart and lungs",
+      "subtitle": "3D 해부학 장면에 'Show heart and lungs' 명령을 적용했습니다.",
+      "createdAt": 1792131247857,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Show heart and lungs",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Show heart and lungs' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-10fa467d",
+      "kind": "3d",
+      "title": "3D 해부학: Highlight brain and fade skull",
+      "subtitle": "3D 해부학 장면에 'Highlight brain and fade skull' 명령을 적용했습니다.",
+      "createdAt": 1792131264504,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Highlight brain and fade skull",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Highlight brain and fade skull' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-ca432d83",
+      "kind": "3d",
+      "title": "3D 해부학: Show heart and lungs",
+      "subtitle": "3D 해부학 장면에 'Show heart and lungs' 명령을 적용했습니다.",
+      "createdAt": 1792131796886,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Show heart and lungs",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Show heart and lungs' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-5b2349a4",
+      "kind": "3d",
+      "title": "3D 해부학: Highlight brain and fade skull",
+      "subtitle": "3D 해부학 장면에 'Highlight brain and fade skull' 명령을 적용했습니다.",
+      "createdAt": 1792131798265,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Highlight brain and fade skull",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Highlight brain and fade skull' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-3da229dd",
+      "kind": "3d",
+      "title": "3D 해부학: Isolate liver and stomach",
+      "subtitle": "3D 해부학 장면에 'Isolate liver and stomach' 명령을 적용했습니다.",
+      "createdAt": 1792131799577,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Isolate liver and stomach",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Isolate liver and stomach' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-dd5c3750",
+      "kind": "3d",
+      "title": "3D 해부학: Show sciatic nerve and gluteus maximus",
+      "subtitle": "3D 해부학 장면에 'Show sciatic nerve and gluteus maximus' 명령을 적용했습니다.",
+      "createdAt": 1792131805045,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Show sciatic nerve and gluteus maximus",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Show sciatic nerve and gluteus maximus' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-0e956208",
+      "kind": "image",
+      "title": "3D Snapshot: 3D Anatomy View",
+      "subtitle": "Captured from Interactive 3D Viewport · Drag-select any region to annotate or animate",
+      "createdAt": 1792131813276,
+      "assetId": "img-cb42420fdb",
+      "assetUrl": "/static/media/img-cb42420fdb.png",
+      "width": 1726,
+      "height": 1898,
+      "model": "3d-webgl-capture",
+      "prompt": "Captured 3D Anatomy Viewport",
+      "parentAssetId": null,
+      "region": null,
+      "outerPixelsPreserved": null,
+      "diagramScene": null,
+      "slideInfo": null,
+      "narrationScript": "현재 3D 해부학 뷰포트를 이미지 보드로 캡처했습니다. 원하는 부위를 드래그해 부분 인페인팅하거나 영상으로 변환해 보세요.",
+      "badge": "NANO BANANA IMAGE"
+    },
+    {
+      "boardId": "board-ddf533dd",
+      "kind": "video",
+      "title": "🎬 Animate current visual to video — AI 모션 영상",
+      "subtitle": "Gemini Omni 720p 16:9 MP4 (gemini-omni-1.1-flash (ffmpeg-motion-engine))",
+      "createdAt": 1792131835323,
+      "assetId": "vid-4e3ff14b2d",
+      "assetUrl": "/static/media/vid-4e3ff14b2d.mp4",
+      "width": 1280,
+      "height": 720,
+      "model": "gemini-omni-1.1-flash (ffmpeg-motion-engine)",
+      "prompt": "🎬 Animate current visual to video",
+      "parentAssetId": "img-ba12c75db9",
+      "region": null,
+      "diagramScene": null,
+      "narrationScript": "'🎬 Animate current visual to video' 요청을 바탕으로 720p MP4 모션 설명 영상을 생성했습니다. 플레이어에서 재생·일시정지 및 반복 확인이 가능합니다.",
+      "badge": "GEMINI OMNI VIDEO"
+    },
+    {
+      "boardId": "board-914181c3",
+      "kind": "3d",
+      "title": "3D 해부학: Show heart and lungs",
+      "subtitle": "3D 해부학 장면에 'Show heart and lungs' 명령을 적용했습니다.",
+      "createdAt": 1792131908619,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Show heart and lungs",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Show heart and lungs' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-81cf057f",
+      "kind": "3d",
+      "title": "3D 해부학: Highlight brain and fade skull",
+      "subtitle": "3D 해부학 장면에 'Highlight brain and fade skull' 명령을 적용했습니다.",
+      "createdAt": 1792131917598,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "gemini-3.8-flash",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": null,
+      "sceneSummary": {
+        "commandText": "Highlight brain and fade skull",
+        "plannerMode": null,
+        "toolCalls": [],
+        "revision": null
+      },
+      "narrationScript": "3D 해부학 장면에 'Highlight brain and fade skull' 명령을 적용했습니다.",
+      "badge": "3D ANATOMY"
+    },
+    {
+      "boardId": "board-bcdc03b2",
+      "kind": "image",
+      "title": "3D Snapshot: 3D Anatomy View",
+      "subtitle": "Captured from Interactive 3D Viewport · Drag-select any region to annotate or animate",
+      "createdAt": 1792131926424,
+      "assetId": "img-800f7ab327",
+      "assetUrl": "/static/media/img-800f7ab327.png",
+      "width": 959,
+      "height": 1032,
+      "model": "3d-webgl-capture",
+      "prompt": "Captured 3D Anatomy Viewport",
+      "parentAssetId": null,
+      "region": null,
+      "outerPixelsPreserved": null,
+      "diagramScene": null,
+      "slideInfo": null,
+      "narrationScript": "현재 3D 해부학 뷰포트를 이미지 보드로 캡처했습니다. 원하는 부위를 드래그해 부분 인페인팅하거나 영상으로 변환해 보세요.",
+      "badge": "NANO BANANA IMAGE"
+    },
+    {
+      "boardId": "board-aeb26c75",
+      "kind": "image",
+      "title": "🎨 Illustrate alveolar gas exchange — AI 시각 도해",
+      "subtitle": "Nano Banana Visual (gemini-3.1-flash-lite-image) · 드래그하여 영역 부분 수정 가능",
+      "createdAt": 1792131959605,
+      "assetId": "img-3fce4b6389",
+      "assetUrl": "/static/media/img-3fce4b6389.png",
+      "width": 1376,
+      "height": 768,
+      "model": "gemini-3.1-flash-lite-image",
+      "prompt": "🎨 Illustrate alveolar gas exchange",
+      "parentAssetId": "img-800f7ab327",
+      "region": null,
+      "outerPixelsPreserved": null,
+      "diagramScene": null,
+      "slideInfo": null,
+      "narrationScript": "요청하신 '🎨 Illustrate alveolar gas exchange' 주제의 시각 일러스트를 생성했습니다. 화면에서 마우스로 원하는 영역을 드래그하면 외부 픽셀을 보존한 채 해당 부위만 부분 수정할 수 있습니다.",
+      "badge": "NANO BANANA IMAGE"
+    },
+    {
+      "boardId": "board-c599fd56",
+      "kind": "image",
+      "title": "영역 부분 수정: Highlight oxygen diffusion gradient ",
+      "subtitle": "외부 픽셀 100% 보존 · 영역 (608,208) 373×351px 수정 완료",
+      "createdAt": 1792131992693,
+      "assetId": "img-2fe72a1524",
+      "assetUrl": "/static/media/img-2fe72a1524.png",
+      "width": 1376,
+      "height": 768,
+      "model": "gemini-3.1-flash-lite-image",
+      "prompt": "Highlight oxygen diffusion gradient and add clinical callout",
+      "parentAssetId": "img-3fce4b6389",
+      "region": {
+        "x": 0.4419,
+        "y": 0.2708,
+        "width": 0.2711,
+        "height": 0.457,
+        "pixelBox": {
+          "left": 608,
+          "top": 208,
+          "width": 373,
+          "height": 351,
+          "right": 981,
+          "bottom": 559
+        }
+      },
+      "outerPixelsPreserved": true,
+      "diagramScene": null,
+      "slideInfo": null,
+      "narrationScript": "선택하신 사각형 영역(373×351px)만 'Highlight oxygen diffusion gradient and add clinical callout' 요청에 맞춰 부분 인페인팅했습니다. 선택 영역 바깥의 원본 픽셀은 100% 그대로 보존되었습니다.",
+      "badge": "REGION INPAINTED"
+    },
+    {
+      "boardId": "board-6c18d2b2",
+      "kind": "image",
+      "title": "영역 부분 수정: Highlight oxygen diffusion arrows in",
+      "subtitle": "외부 픽셀 100% 보존 · 영역 (608,208) 373×351px 수정 완료",
+      "createdAt": 1792132003823,
+      "assetId": "img-35aa2d7fbf",
+      "assetUrl": "/static/media/img-35aa2d7fbf.png",
+      "width": 1376,
+      "height": 768,
+      "model": "gemini-3.1-flash-lite-image",
+      "prompt": "Highlight oxygen diffusion arrows in the selected region.",
+      "parentAssetId": "img-3fce4b6389",
+      "region": {
+        "x": 0.4419,
+        "y": 0.2708,
+        "width": 0.2711,
+        "height": 0.457,
+        "pixelBox": {
+          "left": 608,
+          "top": 208,
+          "width": 373,
+          "height": 351,
+          "right": 981,
+          "bottom": 559
+        }
+      },
+      "outerPixelsPreserved": true,
+      "diagramScene": null,
+      "slideInfo": null,
+      "narrationScript": "선택하신 사각형 영역(373×351px)만 'Highlight oxygen diffusion arrows in the selected region.' 요청에 맞춰 부분 인페인팅했습니다. 선택 영역 바깥의 원본 픽셀은 100% 그대로 보존되었습니다.",
+      "badge": "REGION INPAINTED"
+    },
+    {
+      "boardId": "board-138c6b11",
+      "kind": "video",
+      "title": "Animate physiological blood flow and gas e — AI 모션 영상",
+      "subtitle": "Gemini Omni 720p 16:9 MP4 (gemini-omni-1.1-flash (ffmpeg-motion-engine))",
+      "createdAt": 1792132054074,
+      "assetId": "vid-660b6efe65",
+      "assetUrl": "/static/media/vid-660b6efe65.mp4",
+      "width": 1280,
+      "height": 720,
+      "model": "gemini-omni-1.1-flash (ffmpeg-motion-engine)",
+      "prompt": "Animate physiological blood flow and gas exchange for current medical visual",
+      "parentAssetId": "img-35aa2d7fbf",
+      "region": null,
+      "diagramScene": null,
+      "narrationScript": "'Animate physiological blood flow and gas exchange for current medical visual' 요청을 바탕으로 720p MP4 모션 설명 영상을 생성했습니다. 플레이어에서 재생·일시정지 및 반복 확인이 가능합니다.",
+      "badge": "GEMINI OMNI VIDEO"
+    },
+    {
+      "boardId": "board-232b90ab",
+      "kind": "video",
+      "title": "🎬 Animate current visual to video — AI 모션 영상",
+      "subtitle": "Gemini Omni 720p 16:9 MP4 (gemini-omni-1.1-flash)",
+      "createdAt": 1792132060357,
+      "assetId": "vid-9c6c92e9c8",
+      "assetUrl": "/static/media/vid-9c6c92e9c8.mp4",
+      "width": 1280,
+      "height": 720,
+      "model": "gemini-omni-1.1-flash",
+      "prompt": "🎬 Animate current visual to video",
+      "parentAssetId": "img-35aa2d7fbf",
+      "region": null,
+      "diagramScene": null,
+      "narrationScript": "'🎬 Animate current visual to video' 요청을 바탕으로 720p MP4 모션 설명 영상을 생성했습니다. 플레이어에서 재생·일시정지 및 반복 확인이 가능합니다.",
+      "badge": "GEMINI OMNI VIDEO"
+    },
+    {
+      "boardId": "board-018612e9",
+      "kind": "diagram",
+      "title": "Gs-결합 GPCR → cAMP → PKA 신호 전달 경로",
+      "subtitle": "리간드 결합부터 2차 전령 cAMP 생성 및 PKA 활성화까지의 6단계 흐름",
+      "createdAt": 1792132085008,
+      "assetId": null,
+      "assetUrl": null,
+      "model": "deterministic-sot-graph",
+      "parentAssetId": null,
+      "region": null,
+      "diagramScene": {
+        "sceneType": "diagram",
+        "domain": "biology_pathway",
+        "title": "Gs-결합 GPCR → cAMP → PKA 신호 전달 경로",
+        "subtitle": "리간드 결합부터 2차 전령 cAMP 생성 및 PKA 활성화까지의 6단계 흐름",
+        "sourceIds": [
+          "SOT-GPCR-01"
+        ],
+        "groundingMode": "strict_sot",
+        "camera": {
+          "zoom": 1.0,
+          "panX": 0,
+          "panY": 0,
+          "preset": "overview"
+        },
+        "nodes": [
+          {
+            "id": "step1_ligand_gpcr",
+            "stepNumber": 1,
+            "label": "리간드 결합 & GPCR 활성화",
+            "sublabel": "7TM 수용체 구조 변화",
+            "category": "receptor",
+            "compartment": "세포막 (Plasma Membrane)",
+            "description": "세포외 호르몬/신경전달물질이 GPCR에 결합해 세포질 측 헬릭스 구조를 활성화합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 90,
+            "y": 140
+          },
+          {
+            "id": "step2_gs_activation",
+            "stepNumber": 2,
+            "label": "Gs 단백질 GDP→GTP 교환",
+            "sublabel": "Gαs 서브유닛 활성화",
+            "category": "transducer",
+            "compartment": "세포막 내측",
+            "description": "활성 GPCR이 GEF로 작용하여 Gαs에서 GDP가 방출되고 GTP가 결합합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 310,
+            "y": 140
+          },
+          {
+            "id": "step3_subunit_dissociation",
+            "stepNumber": 3,
+            "label": "Gαs-GTP / Gβγ 분리",
+            "sublabel": "삼량체 해리 및 효과기 이동",
+            "category": "transducer",
+            "compartment": "세포막 내측",
+            "description": "GTP 결합으로 Switch 영역 구조가 변해 Gαs-GTP가 Gβγ 복합체와 분리됩니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 530,
+            "y": 140,
+            "detailChildren": [
+              {
+                "id": "step3a_gdp_pocket_open",
+                "label": "3-A. α5 헬릭스 결합 & 포켓 개방",
+                "detail": "활성 GPCR이 Gαs의 뉴클레오타이드 결합 포켓을 열어 GDP 친화도를 낮춤"
+              },
+              {
+                "id": "step3b_gtp_switch",
+                "label": "3-B. GTP 결합 & Switch I/II 변화",
+                "detail": "세포 내 고농도 GTP가 결합하며 Gαs Switch I/II 입체구조 전환"
+              },
+              {
+                "id": "step3c_effector_targeting",
+                "label": "3-C. Gαs-GTP 유리 & AC 결합",
+                "detail": "Gβγ에서 분리된 Gαs-GTP가 막을 따라 Adenylyl Cyclase 촉매 도메인에 결합"
+              }
+            ]
+          },
+          {
+            "id": "step4_adenylyl_cyclase",
+            "stepNumber": 4,
+            "label": "Adenylyl Cyclase 활성화",
+            "sublabel": "ATP → cAMP 전환 촉매",
+            "category": "enzyme",
+            "compartment": "세포막 (Plasma Membrane)",
+            "description": "Gαs-GTP가 결합한 아데닐산 고리화효소가 ATP를 고리형 AMP(cAMP)로 전환합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 530,
+            "y": 320
+          },
+          {
+            "id": "step5_camp_pka",
+            "stepNumber": 5,
+            "label": "2차 전령 cAMP 증폭 & PKA 해리",
+            "sublabel": "R2C2 → 활성 촉매 서브유닛(C)",
+            "category": "second_messenger",
+            "compartment": "세포질 (Cytosol)",
+            "description": "cAMP가 PKA 조절 서브유닛(R2)에 결합하여 활성 촉매 서브유닛(C2)을 방출합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 310,
+            "y": 320
+          },
+          {
+            "id": "step6_target_response",
+            "stepNumber": 6,
+            "label": "표적 단백질 & CREB 인산화",
+            "sublabel": "대사 효소 조절 및 유전자 전사",
+            "category": "effector_response",
+            "compartment": "세포질 / 핵 (Nucleus)",
+            "description": "활성 PKA가 세포질 표적 효소와 핵 내 CREB 전사인자를 인산화해 세포 반응을 완성합니다.",
+            "highlighted": false,
+            "expanded": false,
+            "opacity": 1.0,
+            "x": 90,
+            "y": 320
+          }
+        ],
+        "edges": [
+          {
+            "id": "e1_2",
+            "from": "step1_ligand_gpcr",
+            "to": "step2_gs_activation",
+            "label": "구조 변화 전달 (GEF)"
+          },
+          {
+            "id": "e2_3",
+            "from": "step2_gs_activation",
+            "to": "step3_subunit_dissociation",
+            "label": "GTP 결합"
+          },
+          {
+            "id": "e3_4",
+            "from": "step3_subunit_dissociation",
+            "to": "step4_adenylyl_cyclase",
+            "label": "Gαs-GTP 이동"
+          },
+          {
+            "id": "e4_5",
+            "from": "step4_adenylyl_cyclase",
+            "to": "step5_camp_pka",
+            "label": "ATP → cAMP 생성"
+          },
+          {
+            "id": "e5_6",
+            "from": "step5_camp_pka",
+            "to": "step6_target_response",
+            "label": "촉매 서브유닛 유리"
+          }
+        ],
+        "annotations": [
+          {
+            "id": "note_sot_gpcr",
+            "targetId": "step3_subunit_dissociation",
+            "title": "핵심 분기점",
+            "body": "Gαs-GTP 분리가 일어나야 하위 Adenylyl Cyclase 및 cAMP 증폭이 시작됩니다.",
+            "badge": "SOT-GPCR-01"
+          }
+        ],
+        "comparison": null,
+        "anatomy": null
+      },
+      "narrationScript": "Gs-결합 GPCR → cAMP → PKA 신호 전달 경로: 리간드 결합부터 2차 전령 cAMP 생성 및 PKA 활성화까지의 6단계 흐름. 각 노드를 클릭하여 세부 기전을 확장하거나 정상 대비 차단 비교 뷰로 전환할 수 있습니다.",
+      "sourceIds": [
+        "SOT-GPCR-01"
+      ],
+      "badge": "2D DIAGRAM"
+    }
+  ]
+}
