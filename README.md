@@ -3,6 +3,9 @@
 **Voice-Driven Multimodal Visual Co-Pilot for Medical & Scientific Education**  
 *Track 3: Google AI for Social Good (Health & Education)*
 
+- **Live Google Cloud Run URL**: **https://visual-board-unified-509893886131.asia-northeast3.run.app**
+- **Public GitHub Repository**: **https://github.com/LacteaYS/visual-board-unified**
+
 Visual Board Unified integrates **whole-body 3D anatomy**, **Nano Banana region-preserving medical illustration & inpainting**, **Gemini Omni 1.1 Flash educational video synthesis**, **interactive 2D mechanism & signaling diagrams**, and **bilingual wake-phrase voice control (`"Visual Board"` / `"비주얼 보드"`)** into a single minimalist stage.
 
 ---
